@@ -1,4 +1,5 @@
 com\sw\compupie\daoBean\PhysicalHealthItem.class
+com\sw\compupie\service\ClientService.class
 com\sw\compupie\daoImpl\LoadLivingArrangement.class
 com\sw\compupie\daoBean\MentalStatusExamBean.class
 com\sw\compupie\service\HelloWorldService.class
@@ -9,6 +10,7 @@ com\sw\compupie\daoImpl\ClientTableManipulation.class
 com\sw\compupie\daoImpl\FollowUpTableManipulation.class
 com\sw\compupie\daoImpl\LoadEducationLevel.class
 com\sw\compupie\filters\CORSFilter.class
+com\sw\compupie\model\Factor2MetaInfo.class
 com\sw\compupie\daoImpl\AdditionalNotesManipulation.class
 com\sw\compupie\daoImpl\Load_Strength_Factor4.class
 com\sw\compupie\daoBean\Strength_Factor2_Problems.class
@@ -16,6 +18,7 @@ com\sw\compupie\daoImpl\Strength_Factor4_Test.class
 com\sw\compupie\daoImpl\Load_SocialRoles.class
 com\sw\compupie\daoBean\Factor2Bean.class
 com\sw\compupie\daoBean\Severity.class
+com\sw\compupie\model\PatientInfo.class
 com\sw\compupie\daoBean\SocialRoleProblems.class
 com\sw\compupie\daoBean\SocialRoleCategory.class
 com\sw\compupie\daoBean\StrengthFactor1.class
@@ -31,8 +34,10 @@ com\sw\compupie\daoImpl\Load_Strength_Factor3.class
 com\sw\compupie\daoImpl\Severity_Test.class
 com\sw\compupie\daoImpl\Factor1TableManipulation.class
 com\sw\compupie\daoBean\EthinicityBean.class
+com\sw\compupie\service\NewService.class
 com\sw\compupie\daoBean\CaseHistoryBean.class
 com\sw\compupie\daoImpl\Load_strength_facor1.class
+com\sw\compupie\daoBean\Factor2MetaWrapper.class
 com\sw\compupie\daoImpl\Load_Severity.class
 com\sw\compupie\daoBean\PhysicalHealthProblems.class
 com\sw\compupie\daoImpl\Strength_Factor2_Test.class
@@ -66,6 +71,7 @@ com\sw\compupie\daoImpl\TestSQL.class
 com\sw\compupie\daoBean\LivingArrangementBean.class
 com\sw\compupie\daoBean\ClientBean.class
 com\sw\compupie\daoImpl\StrengthResourceManipulation.class
+com\sw\compupie\service\PatientService.class
 com\sw\compupie\daoImpl\Case_History_Test.class
 com\sw\compupie\daoImpl\LoadPhysicalHealth.class
 com\sw\compupie\daoBean\TraumaBean.class

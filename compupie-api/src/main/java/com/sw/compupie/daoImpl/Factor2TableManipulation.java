@@ -35,7 +35,7 @@ public class Factor2TableManipulation {
 			while (rs.next()) {
 				Factor2Bean info = new Factor2Bean();
 				info.setId(rs.getInt("id"));
-				info.setproblemCategory(rs.getString("socialRoleDescription"));
+				info.setproblemCategory(rs.getString("problemCategory"));
 				info.setProblemType(rs.getString("problemType"));
 				info.setServerity(rs.getString("serverity"));
 				info.setDuration(rs.getString("duration"));

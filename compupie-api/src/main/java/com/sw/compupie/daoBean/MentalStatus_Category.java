@@ -9,6 +9,8 @@ public class MentalStatus_Category {
 	
 	private String category;
 	
+	private List<MentalStatusProblemsBean> riskLevel = new ArrayList<MentalStatusProblemsBean>();
+	
 	private List<MentalStatusProblemsBean> items = new ArrayList<MentalStatusProblemsBean>();
 
 	public int getId() {
@@ -33,6 +35,14 @@ public class MentalStatus_Category {
 
 	public void setItems(List<MentalStatusProblemsBean> items) {
 		this.items = items;
+	}
+
+	public List<MentalStatusProblemsBean> getRiskLevel() {
+		return riskLevel;
+	}
+
+	public void setRiskLevel(List<MentalStatusProblemsBean> riskLevel) {
+		this.riskLevel = riskLevel;
 	}
 }
 
