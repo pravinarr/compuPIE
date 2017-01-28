@@ -4,7 +4,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-import com.sw.compupie.model.PatientInfo;
+//import com.sw.compupie.model.PatientInfo;
 
 @Path("/hello")
 public class HelloWorldService {

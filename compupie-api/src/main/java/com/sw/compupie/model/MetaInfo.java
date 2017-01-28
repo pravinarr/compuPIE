@@ -9,7 +9,6 @@ import com.sw.compupie.daoBean.Duration;
 import com.sw.compupie.daoBean.EducationLevelBean;
 import com.sw.compupie.daoBean.EmploymentStatusBean;
 import com.sw.compupie.daoBean.EthinicityBean;
-import com.sw.compupie.daoBean.Factor2MetaWrapper;
 import com.sw.compupie.daoBean.GenderBean;
 import com.sw.compupie.daoBean.LivingArrangementBean;
 import com.sw.compupie.daoBean.MaritaStatusBean;
@@ -85,7 +84,9 @@ public class MetaInfo {
 	
 	public List<Severity> severity;
 	
-	public List<Factor2MetaWrapper> factor2MetaInfo;
+	public Facto2MetaInfoWrapper factor2MetaInfo;
+	
+	
 	
 	public List<DSM_AXIS_5> dsmAxis5;
 	
@@ -167,8 +168,7 @@ public class MetaInfo {
 		Load_Severity sev = new Load_Severity();
 		severity = sev.getAllSeverity();
 		
-		Factor2MetaInfo info = new Factor2MetaInfo();
-		factor2MetaInfo = info.getFactor2MetaInfo();
+		factor2MetaInfo = new Facto2MetaInfoWrapper();
 		
 		Load_DSM_AXIS_5 dsm = new Load_DSM_AXIS_5();
 		dsmAxis5 = dsm.getAllDSM_AXIS_5();

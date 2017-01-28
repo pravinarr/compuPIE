@@ -7,7 +7,7 @@ public class DSM_AXIS_5 {
 	
 	private String id;
 	
-	private String DSM_Category;
+	private String category;
 	
 	private List<DSM_AXIS_5> items = new ArrayList<DSM_AXIS_5>();
 	
@@ -16,7 +16,7 @@ public class DSM_AXIS_5 {
 	}
 	
 	public String getCategory(){
-		return DSM_Category;
+		return category;
 	}
 	
 	public List<DSM_AXIS_5> getItems() {
@@ -27,8 +27,8 @@ public class DSM_AXIS_5 {
 		this.id = id;
 	}
 	
-	public String setCategory(String DSM_Category){
-		return this.DSM_Category = DSM_Category;
+	public void setCategory(String DSM_Category){
+		this.category = DSM_Category;
 	}
 	
 	public void setItems(List<DSM_AXIS_5> items){

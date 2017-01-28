@@ -40,6 +40,7 @@ public class ClientTableManipulation {
 			stmt = c.createStatement();
 			rs = stmt.executeQuery(createSearchString(bean));
 			while (rs.next()) {
+				FollowUpTableManipulation mn = new FollowUpTableManipulation();
 				SearchBean info = new SearchBean();
 				info.setId(rs.getInt("id"));
 				info.setCity(rs.getString("city"));
@@ -52,6 +53,7 @@ public class ClientTableManipulation {
 				info.setState(rs.getString("stateName"));
 				info.setZipCode(rs.getString("zipcode"));
 				info.setPhone(rs.getString("phone"));
+				info.setIsClosed(""+mn.isClosed(info.getId()));
 				list.add(info);
 			}
 			rs.close();
@@ -62,6 +64,22 @@ public class ClientTableManipulation {
 		}
 
 		return list;
+	}
+	
+
+	public boolean deleteFromSearch(String id) {
+		ClientTableManipulationConn();
+		Statement stmt = null;
+		int update = 0;
+		try {
+			stmt = c.createStatement();
+			update = stmt.executeUpdate("update CLIENT_INFO set deleted='Y' where id=\""+id+"\"");
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (update==1)?true:false;
 	}
 
 	public ClientBean getClientInfo(String id) {
@@ -82,9 +100,8 @@ public class ClientTableManipulation {
 				info.setGender(rs.getString("gender"));
 				info.setMaritalStatus(rs.getString("maritalStatus"));
 				info.setOccupatiion(rs.getString("occupatiion"));
-				SimpleDateFormat sdf1 = new SimpleDateFormat("yyy-MM-dd");
-				java.util.Date date = sdf1.parse(rs.getString("dob"));
-				info.setDob(new Date(date.getTime()));
+				SimpleDateFormat sdf1 = new SimpleDateFormat("MM/dd/yyyy");
+				info.setDob(rs.getString("dob"));
 				info.setStreet(rs.getString("street"));
 				info.setCity(rs.getString("city"));
 				info.setStateName(rs.getString("stateName"));
@@ -102,7 +119,7 @@ public class ClientTableManipulation {
 			rs.close();
 			stmt.close();
 			c.close();
-		} catch (SQLException | ParseException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -129,7 +146,9 @@ public class ClientTableManipulation {
 		return id;
 	}
 
-	public boolean saveNewClient(ClientBean info) {
+	public int saveNewClient(ClientBean info) {
+		
+		int cliId = getmaxId()+1;
 		ClientTableManipulationConn();
 		Statement stmt = null;
 		int update = 0;
@@ -141,7 +160,10 @@ public class ClientTableManipulation {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return (update > 0);
+		if(update==1){
+			cliId = 0;
+		}
+		return cliId;
 	}
 
 	public boolean updateNewClient(ClientBean info) {
@@ -164,7 +186,7 @@ public class ClientTableManipulation {
 		buffer.append(
 				"insert into CLIENT_INFO (id,lastname,middlename,firstname,clientId,gender,maritalStatus,dob,occupatiion,street,city,stateName,zipcode,phone,ethnicity,referredBy,additional,"
 						+ "noOfChildrenInCare,highestLevelOfEducation,employmentStatus,livingArrangement,assessedBy) values");
-		buffer.append("(" + (getmaxId() + 1));
+		buffer.append("(" + info.getId());
 		buffer.append(",\"" + info.getLastname() + "\"");
 		buffer.append(",\"" + info.getMiddleName() + "\"");
 		buffer.append(",\"" + info.getFirstname() + "\"");
@@ -220,8 +242,8 @@ public class ClientTableManipulation {
 
 	private String createSearchString(SearchBean bean) {
 		StringBuffer buffer = new StringBuffer();
-		int i = 0;
-		buffer.append("SELECT * FROM CLIENT_INFO ");
+		int i = 1;
+		buffer.append("SELECT * FROM CLIENT_INFO where deleted != 'Y' ");
 		if (bean.getFirstName() != null && !bean.getFirstName().trim().equalsIgnoreCase("")) {
 			if (i == 0) {
 				buffer.append(" where ");

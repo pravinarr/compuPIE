@@ -11,6 +11,8 @@ public class FollowUpBean {
 	private String date;
 	
 	private String accessedBy;
+	
+	private String notes;
 	/**
 	 * @return the clientid
 	 */
@@ -79,6 +81,20 @@ public class FollowUpBean {
 	 */
 	public void setAccessedBy(String accessedBy) {
 		this.accessedBy = accessedBy;
+	}
+
+	/**
+	 * @return the notes
+	 */
+	public String getNotes() {
+		return notes;
+	}
+
+	/**
+	 * @param notes the notes to set
+	 */
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 

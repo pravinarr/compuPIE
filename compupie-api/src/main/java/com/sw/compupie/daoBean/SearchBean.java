@@ -8,7 +8,7 @@ public class SearchBean {
 	
 	private String firstName;
 	
-	private String LastName;
+	private String lastName;
 	
 	private String middleName;
 	
@@ -23,6 +23,8 @@ public class SearchBean {
 	private String gender;
 	
 	private String zipCode;
+	
+	private String isClosed;
 
 	/**
 	 * @return the id
@@ -70,14 +72,14 @@ public class SearchBean {
 	 * @return the lastName
 	 */
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	/**
 	 * @param lastName the lastName to set
 	 */
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 
 	/**
@@ -176,6 +178,20 @@ public class SearchBean {
 	 */
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	/**
+	 * @return the isClosed
+	 */
+	public String getIsClosed() {
+		return isClosed;
+	}
+
+	/**
+	 * @param isClosed the isClosed to set
+	 */
+	public void setIsClosed(String isClosed) {
+		this.isClosed = isClosed;
 	}
 	
 

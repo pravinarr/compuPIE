@@ -1,29 +1,34 @@
 package com.sw.compupie.daoBean;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class ClientBean {
-	private int id;
-	private String lastname;
-	private String middleName;
-	private String firstname;
-	private String clientId;
-	private String gender;
-	private String maritalStatus;
-	private Date dob;
-	private String occupatiion;
-	private String street;
-	private String city;
-	private String stateName;
-	private String zipcode;
-	private String phone;
-	private String ethnicity;
-	private String referredBy;
-	private int noOfChildrenInCare;
-	private String highestLevelOfEducation;
-	private String employmentStatus;
-	private String livingArrangement;
-	private String assessedBy;
+public class ClientBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public int id;
+	public String lastname;
+	public String middleName;
+	public String firstname;
+	public String clientId;
+	public String gender;
+	public String maritalStatus;
+	public String dob;
+	public String occupatiion;
+	public String street;
+	public String city;
+	public String stateName;
+	public String zipcode;
+	public String phone;
+	public String ethnicity;
+	public String referredBy;
+	public int noOfChildrenInCare;
+	public String highestLevelOfEducation;
+	public String employmentStatus;
+	public String livingArrangement;
+	public String assessedBy;
 
 	/**
 	 * @return the noOfChildrenInCare
@@ -148,13 +153,13 @@ public class ClientBean {
 	/**
 	 * @return the dob
 	 */
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 	/**
 	 * @param dob the dob to set
 	 */
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 	/**
@@ -289,6 +294,6 @@ public class ClientBean {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-	private String additional;
+	public String additional;
 
 }

@@ -2,22 +2,31 @@ package com.sw.compupie.daoBean;
 
 public class Factor3Bean {
 
-	private int id;
-	private String dsmDiagnosis;
-	private String diagnosisSource;
-	private String serverity;
-	private String duration;
-	private String copingAbitity;
-	private String priority;
-	private String goal;
-	private String recommendedInter;
-	private String expectedOutcome;
-	private int clientId;
-	private int followup;
-	private String MHP;
-	private String noDx;
-	private String denies;
+	public int id;
+	public String dsmDiagnosis;
+	public String diagnosisSource;
+	public String serverity;
+	public String duration;
+	public String copingAbitity;
+	public String priority;
+	public String goal;
+	public String recommendedInter;
+	public String expectedOutcome;
+	public int clientId;
+	public int followup;
+	public String MHP;
+	public String noDx;
+	public String denies;
+	public String specifier;
 	
+
+	public String getSpecifier() {
+		return specifier;
+	}
+
+	public void setSpecifier(String specifier) {
+		this.specifier = specifier;
+	}
 
 	/**
 	 * @return the followup

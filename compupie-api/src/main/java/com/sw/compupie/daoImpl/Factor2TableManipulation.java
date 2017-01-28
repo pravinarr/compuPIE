@@ -235,9 +235,10 @@ public class Factor2TableManipulation {
 		buffer.append(",goal=\"" + info.getGoal() + "\"");
 		buffer.append(",recommendedInter=\"" + info.getRecommendedInter() + "\"");
 		buffer.append(",expectedOutcome=\"" + info.getExpectedOutcome() + "\"");
-		buffer.append(",clientId=" + info.getClientId());
+		//buffer.append(",clientId=" + info.getClientId());
 		buffer.append(",followUp=" + info.getFollowup());
-		buffer.append(" where id =" + info.getId()+";");
+		buffer.append(" where id =" + info.getId());
+		buffer.append(" and clientId=" + info.getClientId()+";");
 		return buffer.toString();
 	}
 

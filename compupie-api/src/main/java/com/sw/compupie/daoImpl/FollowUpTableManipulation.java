@@ -23,6 +23,16 @@ public class FollowUpTableManipulation {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean isClosed(int id){
+		List<FollowUpBean> beans = getFollowUpInfo(id);
+		for(FollowUpBean bean: beans){
+			if(bean.getStage() ==  3){
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public List<FollowUpBean> getFollowUpInfo(int id) {
 		FollowUpTableManipulation();
@@ -39,6 +49,7 @@ public class FollowUpTableManipulation {
 				info.setDate(rs.getString("dof"));
 				info.setAccessedBy(rs.getString("accessedBy"));
 				info.setStage(rs.getInt("stage"));
+				info.setNotes(rs.getString("notes"));
 				list.add(info);
 			}
 			rs.close();
@@ -49,15 +60,15 @@ public class FollowUpTableManipulation {
 		}
 		return list;
 	}
-	
-	public List<FollowUpBean> getFollowUpInfo(int id,int clientId) {
+
+	public List<FollowUpBean> getFollowUpInfo(int id, int clientId) {
 		FollowUpTableManipulation();
 		List<FollowUpBean> list = new ArrayList<FollowUpBean>();
 		Statement stmt = null;
 		ResultSet rs;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM FOLLOW_UP where clientId =" + clientId + " and id ="+id+";");
+			rs = stmt.executeQuery("SELECT * FROM FOLLOW_UP where clientId =" + clientId + " and id =" + id + ";");
 			while (rs.next()) {
 				FollowUpBean info = new FollowUpBean();
 				info.setId(rs.getInt("id"));
@@ -65,6 +76,7 @@ public class FollowUpTableManipulation {
 				info.setDate(rs.getString("dof"));
 				info.setStage(rs.getInt("stage"));
 				info.setAccessedBy(rs.getString("accessedBy"));
+				info.setNotes(rs.getString("notes"));
 				list.add(info);
 			}
 			rs.close();
@@ -83,7 +95,7 @@ public class FollowUpTableManipulation {
 		ResultSet rs;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT max(id) FROM Follow_up where clientId="+clientID+" ;");
+			rs = stmt.executeQuery("SELECT max(id) FROM Follow_up where clientId=" + clientID + " ;");
 			while (rs.next()) {
 				id = rs.getInt(1);
 			}
@@ -111,14 +123,14 @@ public class FollowUpTableManipulation {
 		return (update > 0);
 	}
 
-		private String createStringTOSave(FollowUpBean info) {
+	private String createStringTOSave(FollowUpBean info) {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(
-				"insert into FOLLOW_UP (id,clientid,dof,stage,accessedBy) values");
-		buffer.append("(" + (getmaxId(info.getClientid())+1));
+		buffer.append("insert into FOLLOW_UP (id,clientid,dof,stage,notes,accessedBy) values");
+		buffer.append("(" + (getmaxId(info.getClientid()) + 1));
 		buffer.append("," + info.getClientid() + "");
 		buffer.append(",date('now')");
-		buffer.append("," + info.getStage()+" ");
+		buffer.append("," + info.getStage() + " ");
+		buffer.append("," + info.getNotes() + " ");
 		buffer.append(",\"" + info.getAccessedBy() + "\");");
 		return buffer.toString();
 	}

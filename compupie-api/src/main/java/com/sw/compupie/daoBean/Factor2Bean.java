@@ -2,18 +2,18 @@ package com.sw.compupie.daoBean;
 
 public class Factor2Bean {
 
-	private int id;
-	private String problemCategory;
-	private String problemType;
-	private String serverity;
-	private String duration;
-	private String copingAbitity;
-	private String priority;
-	private String goal;
-	private String recommendedInter;
-	private String expectedOutcome;
-	private int clientId;
-	private int followup;
+	public int id;
+	public String problemCategory;
+	public String problemType;
+	public String serverity;
+	public String duration;
+	public String copingAbitity;
+	public String priority;
+	public String goal;
+	public String recommendedInter;
+	public String expectedOutcome;
+	public int clientId;
+	public int followup;
 
 	/**
 	 * @return the followup
