@@ -22,6 +22,63 @@ public class Factor3TableManipulation {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean deleteFactory(String clientId, String problemId) {
+		Factor3TableManipulationcreate();
+		Statement stmt = null;
+		int update = 0;
+		try {
+			stmt = c.createStatement();
+			update = stmt.executeUpdate(createStringDelete(clientId, problemId));
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (update > 0);
+	}
+
+	private String createStringDelete(String clientId, String problemId) {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("delete from FACTOR3 where id = " + problemId + " and clientId = " + clientId + ";");
+		return buffer.toString();
+	}
+	
+	public List<Factor3Bean> getFactorInfoLast(int id) {
+		Factor3TableManipulationcreate();
+		List<Factor3Bean> list = new ArrayList<Factor3Bean>();
+		Statement stmt = null;
+		ResultSet rs;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM FACTOR3 where clientId =" + id + ""
+					+ " and followup = (select max(id) from follow_up where clientid = "+id +" and stage in (0,2));");
+			while (rs.next()) {
+				Factor3Bean info = new Factor3Bean();
+				info.setId(0);
+				info.setdsmDiagnosis(rs.getString("problem"));
+				info.setdiagnosisSource(rs.getString("source"));
+				info.setServerity(rs.getString("serverity"));
+				info.setDuration(rs.getString("duration"));
+				info.setCopingAbitity(rs.getString("copingAbitity"));
+				info.setPriority(rs.getString("priority"));
+				info.setGoal(rs.getString("goal"));
+				info.setRecommendedInter(rs.getString("recommendedInter"));
+				info.setExpectedOutcome(rs.getString("expectedOutcome"));
+				info.setClientId(rs.getInt("clientId"));
+				info.setFollowup(0);
+				info.setSpecifier(rs.getString("specifier"));
+				
+				list.add(info);
+			}
+			rs.close();
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public List<Factor3Bean> getFactorInfo(int id) {
 		Factor3TableManipulationcreate();
@@ -155,6 +212,7 @@ public class Factor3TableManipulation {
 				info.setExpectedOutcome(rs.getString("expectedOutcome"));
 				info.setClientId(rs.getInt("clientId"));
 				info.setFollowup(rs.getInt("followUp"));
+				info.setSpecifier(rs.getString("specifier"));
 				list.add(info);
 			}
 			rs.close();
@@ -261,4 +319,6 @@ public class Factor3TableManipulation {
 		buffer.append(" and clientId=" + info.getClientId()+";");
 		return buffer.toString();
 	}
+
+
 }

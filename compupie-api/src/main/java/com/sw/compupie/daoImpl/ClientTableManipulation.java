@@ -298,6 +298,15 @@ public class ClientTableManipulation {
 			}
 			buffer.append(" clientId like '%" + bean.getClientId() + "%'");
 		}
+		if (bean.getUserId() != null && !bean.getUserId().trim().equalsIgnoreCase("")) {
+			if (i == 0) {
+				buffer.append(" where ");
+				i++;
+			}else{
+				buffer.append(" and ");
+			}
+			buffer.append(" assessedBy like '%" + bean.getUserId() + "%'");
+		}
 		buffer.append(";");
 		return buffer.toString();
 	}

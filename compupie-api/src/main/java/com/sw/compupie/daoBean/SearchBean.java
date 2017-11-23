@@ -25,6 +25,16 @@ public class SearchBean {
 	private String zipCode;
 	
 	private String isClosed;
+	
+	private String userId;
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	/**
 	 * @return the id

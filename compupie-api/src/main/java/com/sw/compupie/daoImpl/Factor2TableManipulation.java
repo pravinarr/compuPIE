@@ -23,7 +23,63 @@ public class Factor2TableManipulation {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean deleteFactory(String clientId, String problemId) {
+		Factor2TableManipulationcreate();
+		Statement stmt = null;
+		int update = 0;
+		try {
+			stmt = c.createStatement();
+			update = stmt.executeUpdate(createStringDelete(clientId, problemId));
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (update > 0);
+	}
 
+	private String createStringDelete(String clientId, String problemId) {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("delete from FACTOR2 where id = " + problemId + " and clientId = " + clientId + ";");
+		return buffer.toString();
+	}
+
+	public List<Factor2Bean> getFactorInfoLast(int id) {
+		Factor2TableManipulationcreate();
+		List<Factor2Bean> list = new ArrayList<Factor2Bean>();
+		Statement stmt = null;
+		ResultSet rs;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM FACTOR2 where clientId =" + id + ""
+					+ " and followup = (select max(id) from follow_up where clientid = "+id +"  and stage in (0,2));");
+			while (rs.next()) {
+				Factor2Bean info = new Factor2Bean();
+				info.setId(0);
+				info.setproblemCategory(rs.getString("problemCategory"));
+				info.setProblemType(rs.getString("problemType"));
+				info.setServerity(rs.getString("serverity"));
+				info.setDuration(rs.getString("duration"));
+				info.setCopingAbitity(rs.getString("copingAbitity"));
+				info.setPriority(rs.getString("priority"));
+				info.setGoal(rs.getString("goal"));
+				info.setRecommendedInter(rs.getString("recommendedInter"));
+				info.setExpectedOutcome(rs.getString("expectedOutcome"));
+				info.setClientId(rs.getInt("clientId"));
+				info.setFollowup(0);
+				list.add(info);
+			}
+			rs.close();
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
 	public List<Factor2Bean> getFactorInfo(int id) {
 		Factor2TableManipulationcreate();
 		List<Factor2Bean> list = new ArrayList<Factor2Bean>();
@@ -241,5 +297,7 @@ public class Factor2TableManipulation {
 		buffer.append(" and clientId=" + info.getClientId()+";");
 		return buffer.toString();
 	}
+
+	
 
 }

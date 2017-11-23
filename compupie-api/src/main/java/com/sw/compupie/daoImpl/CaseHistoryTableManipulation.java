@@ -39,6 +39,7 @@ public class CaseHistoryTableManipulation {
 				info.setReasonForRefer(rs.getString("reasonForRefer"));
 				info.setRelevantHistory(rs.getString("relevantHistory"));
 				info.setTraumaHistory(rs.getString("traumaHistory"));
+				info.setNotes(rs.getString("notes"));
 				list.add(info);
 			}
 			rs.close();
@@ -104,12 +105,13 @@ public class CaseHistoryTableManipulation {
 	private String createStringTOSave(CaseHistoryBean info) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(
-				"insert into CASE_HISTORY (id,clientId,reasonForRefer,currentSituation,relevantHistory,traumaHistory) values");
+				"insert into CASE_HISTORY (id,clientId,reasonForRefer,currentSituation,relevantHistory,notes,traumaHistory) values");
 		buffer.append("(" + (getmaxId(info.getClientId()) + 1));
 		buffer.append("," + info.getClientId());
 		buffer.append(",\"" + info.getReasonForRefer() + "\"");
 		buffer.append(",\"" + info.getCurrentSituation()+ "\"");
 		buffer.append(",\"" + info.getRelevantHistory() + "\"");
+		buffer.append(",'" + info.getNotes() + "'");
 		buffer.append(",\"" + info.getTraumaHistory() + "\");");
 		return buffer.toString();
 	}
@@ -121,6 +123,7 @@ public class CaseHistoryTableManipulation {
 		buffer.append(",reasonForRefer=\"" + info.getReasonForRefer() + "\"");
 		buffer.append(",currentSituation=\"" + info.getCurrentSituation()+ "\"");
 		buffer.append(",relevantHistory=\"" + info.getRelevantHistory() + "\"");
+		buffer.append(",notes='" + info.getNotes() + "'");
 		buffer.append(",traumaHistory=\"" + info.getTraumaHistory() + "\"");
 		buffer.append(" where id =" + info.getId()+" and clientId="+info.getClientId()+";");
 		return buffer.toString();

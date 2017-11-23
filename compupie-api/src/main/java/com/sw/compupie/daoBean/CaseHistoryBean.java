@@ -8,7 +8,14 @@ public class CaseHistoryBean {
 	private String currentSituation;
 	private String relevantHistory;
 	private String traumaHistory;
+	private String notes;
 	
+	public String getNotes() {
+		return notes;
+	}
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
 	/**
 	 * @return the id
 	 */

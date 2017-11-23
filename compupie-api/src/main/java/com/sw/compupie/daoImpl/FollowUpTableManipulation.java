@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sw.compupie.daoBean.Factor1Bean;
 import com.sw.compupie.daoBean.FollowUpBean;
+import com.sw.compupie.report.helper.utils.DateUtil;
 
 public class FollowUpTableManipulation {
 	Connection c = null;
@@ -46,7 +46,7 @@ public class FollowUpTableManipulation {
 				FollowUpBean info = new FollowUpBean();
 				info.setId(rs.getInt("id"));
 				info.setClientid(rs.getInt("clientid"));
-				info.setDate(rs.getString("dof"));
+				info.setDate(DateUtil.changeDateToAmerican(rs.getString("dof")));
 				info.setAccessedBy(rs.getString("accessedBy"));
 				info.setStage(rs.getInt("stage"));
 				info.setNotes(rs.getString("notes"));

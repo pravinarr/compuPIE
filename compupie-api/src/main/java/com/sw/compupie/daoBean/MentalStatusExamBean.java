@@ -1,12 +1,15 @@
 package com.sw.compupie.daoBean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MentalStatusExamBean {
 
 	private int id;
 	
 	private int clientId;
 	
-	private String problemStr;
+	private List<MentalStatusObject> problemStr = new ArrayList<MentalStatusObject>();
 
 	/**
 	 * @return the id
@@ -39,14 +42,14 @@ public class MentalStatusExamBean {
 	/**
 	 * @return the problemStr
 	 */
-	public String getProblemStr() {
+	public List<MentalStatusObject> getProblemStr() {
 		return problemStr;
 	}
 
 	/**
 	 * @param problemStr the problemStr to set
 	 */
-	public void setProblemStr(String problemStr) {
+	public void setProblemStr(List<MentalStatusObject> problemStr) {
 		this.problemStr = problemStr;
 	}
 	

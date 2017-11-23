@@ -22,6 +22,41 @@ public class Factor1TableManipulation {
 			e.printStackTrace();
 		}
 	}
+	
+	public List<Factor1Bean> getFactorInfoLast(int id) {
+		Factor1TableManipulationcreate();
+		List<Factor1Bean> list = new ArrayList<Factor1Bean>();
+		Statement stmt = null;
+		ResultSet rs;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM FACTOR1 where clientId =" + id + ""
+					+ " and followup = (select max(id) from follow_up where clientid = "+id +" and stage in (0,2));");
+			while (rs.next()) {
+				Factor1Bean info = new Factor1Bean();
+				info.setId(0);
+				info.setSocialRoleDescription(rs.getString("socialRoleDescription"));
+				info.setProblemType(rs.getString("problemType"));
+				info.setServerity(rs.getString("serverity"));
+				info.setDuration(rs.getString("duration"));
+				info.setCopingAbitity(rs.getString("copingAbitity"));
+				info.setPriority(rs.getString("priority"));
+				info.setGoal(rs.getString("goal"));
+				info.setRecommendedInter(rs.getString("recommendedInter"));
+				info.setExpectedOutcome(rs.getString("expectedOutcome"));
+				info.setClientId(rs.getInt("clientId"));
+				info.setFollowup(0);
+				info.setSocialRoleProblemType(rs.getString("socialRoleProblemType"));
+				list.add(info);
+			}
+			rs.close();
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public List<Factor1Bean> getFactorInfo(int id) {
 		Factor1TableManipulationcreate();
@@ -56,15 +91,16 @@ public class Factor1TableManipulation {
 		}
 		return list;
 	}
-	
-	public List<Factor1Bean> getFactorInfoForFollowup(int clientID,int followup) {
+
+	public List<Factor1Bean> getFactorInfoForFollowup(int clientID, int followup) {
 		Factor1TableManipulationcreate();
 		List<Factor1Bean> list = new ArrayList<Factor1Bean>();
 		Statement stmt = null;
 		ResultSet rs;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM FACTOR1 where clientId =" + clientID + " and followUp = "+ followup +";");
+			rs = stmt.executeQuery(
+					"SELECT * FROM FACTOR1 where clientId =" + clientID + " and followUp = " + followup + ";");
 			while (rs.next()) {
 				Factor1Bean info = new Factor1Bean();
 				info.setId(rs.getInt("id"));
@@ -90,15 +126,15 @@ public class Factor1TableManipulation {
 		}
 		return list;
 	}
-	
-	public List<Factor1Bean> getFactorInfo(int id,int clientId) {
+
+	public List<Factor1Bean> getFactorInfo(int id, int clientId) {
 		List<Factor1Bean> list = new ArrayList<Factor1Bean>();
 		Factor1TableManipulationcreate();
 		Statement stmt = null;
 		ResultSet rs;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM FACTOR1 where clientId =" + clientId + " and id ="+id+";");
+			rs = stmt.executeQuery("SELECT * FROM FACTOR1 where clientId =" + clientId + " and id =" + id + ";");
 			while (rs.next()) {
 				Factor1Bean info = new Factor1Bean();
 				info.setId(rs.getInt("id"));
@@ -132,7 +168,7 @@ public class Factor1TableManipulation {
 		ResultSet rs;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT max(id) FROM FACTOR1 where clientId="+clientID+";");
+			rs = stmt.executeQuery("SELECT max(id) FROM FACTOR1 where clientId=" + clientID + ";");
 			while (rs.next()) {
 				id = rs.getInt(1);
 			}
@@ -175,10 +211,30 @@ public class Factor1TableManipulation {
 		return (update > 0);
 	}
 
+	public boolean deleteFactory(String clientId, String problemId) {
+		Factor1TableManipulationcreate();
+		Statement stmt = null;
+		int update = 0;
+		try {
+			stmt = c.createStatement();
+			update = stmt.executeUpdate(createStringDelete(clientId, problemId));
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (update > 0);
+	}
+
+	private String createStringDelete(String clientId, String problemId) {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("delete from FACTOR1 where id = " + problemId + " and clientId = " + clientId + ";");
+		return buffer.toString();
+	}
+
 	private String createStringTOSave(Factor1Bean info) {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(
-				"insert into FACTOR1 (id,socialRoleDescription,problemType,serverity,duration,copingAbitity,"
+		buffer.append("insert into FACTOR1 (id,socialRoleDescription,problemType,serverity,duration,copingAbitity,"
 				+ "priority,goal,recommendedInter,expectedOutcome,socialRoleProblemType,clientId,followUp) values");
 		buffer.append("(" + (getmaxId(info.getClientId()) + 1));
 		buffer.append(",\"" + info.getSocialRoleDescription() + "\"");
@@ -192,7 +248,7 @@ public class Factor1TableManipulation {
 		buffer.append(",\"" + info.getExpectedOutcome() + "\"");
 		buffer.append(",\"" + info.getSocialRoleProblemType() + "\"");
 		buffer.append("," + info.getClientId());
-		buffer.append("," + info.getFollowup()+");");
+		buffer.append("," + info.getFollowup() + ");");
 		return buffer.toString();
 	}
 
@@ -209,10 +265,12 @@ public class Factor1TableManipulation {
 		buffer.append(",recommendedInter=\"" + info.getRecommendedInter() + "\"");
 		buffer.append(",expectedOutcome=\"" + info.getExpectedOutcome() + "\"");
 		buffer.append(",socialRoleProblemType=\"" + info.getSocialRoleProblemType() + "\"");
-		//buffer.append(",clientId=" + info.getClientId());
+		// buffer.append(",clientId=" + info.getClientId());
 		buffer.append(",followUp=" + info.getFollowup());
 		buffer.append(" where id =" + info.getId());
-		buffer.append(" and clientId=" + info.getClientId()+";");
+		buffer.append(" and clientId=" + info.getClientId() + ";");
 		return buffer.toString();
 	}
+
+	
 }
