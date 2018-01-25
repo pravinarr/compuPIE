@@ -44,7 +44,7 @@ public class LoadTraumaHIstory {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

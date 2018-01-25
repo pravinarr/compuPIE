@@ -41,7 +41,7 @@ public class ClientInfoReport extends BaseReport {
 
 		Phrase client = new Phrase();
 		client.add(new Chunk("Client: ", font1));
-		client.add(new Chunk("" + info.getLastname() + "," + info.getFirstname(), font2));
+		client.add(new Chunk("" + info.getLastname() + ", " + info.getFirstname(), font2));
 		PdfPCell cell0 = new PdfPCell(client);
 
 		client = new Phrase();

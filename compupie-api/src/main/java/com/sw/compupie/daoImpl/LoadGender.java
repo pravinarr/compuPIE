@@ -42,7 +42,7 @@ public class LoadGender {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

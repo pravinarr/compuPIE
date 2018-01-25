@@ -46,6 +46,10 @@ public class MSEReport extends BaseReport {
 						child = new Paragraph();
 						child.add(new Phrase("Risk Level: " + object.getRiskValue(), font5));
 						doc.add(child);
+					}else if(object.getRisk().equalsIgnoreCase("true")) {
+							child = new Paragraph();
+							child.add(new Phrase("Risk Level: No Risk" + object.getRiskValue(), font5));
+							doc.add(child);
 					}
 				}
 			}

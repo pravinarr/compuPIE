@@ -45,7 +45,7 @@ public class FactorLongReport extends BaseReport {
 		List<Factor1Bean> list = mani.getFactorInfoForFollowup(this.clientId, this.followup);
 		if (!list.isEmpty()) {
 			Font fontx = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD | Font.UNDERLINE);
-			Paragraph heading = new Paragraph(new Phrase("Factor 1: Social Role and Relationship", fontx));
+			Paragraph heading = new Paragraph(new Phrase("Factor 1: Social roles and relationships", fontx));
 			heading.setAlignment(0);
 			doc.add(heading);
 		}
@@ -69,7 +69,7 @@ public class FactorLongReport extends BaseReport {
 
 		if (!list.isEmpty()) {
 			Font fontx = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD | Font.UNDERLINE);
-			Paragraph heading = new Paragraph(new Phrase("Factor 2: Environmental Situations", fontx));
+			Paragraph heading = new Paragraph(new Phrase("Factor 2: Environmental problems/needs", fontx));
 			heading.setAlignment(0);
 			doc.add(heading);
 		}
@@ -94,8 +94,8 @@ public class FactorLongReport extends BaseReport {
 		Factor4MoreInfoBean b = mn.getStrength(this.clientId);
 		if (!b.getProblemStr().trim().equalsIgnoreCase("")) {
 			Font fontx = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD | Font.UNDERLINE);
-			Font fonty = new Font(Font.FontFamily.HELVETICA, 12, Font.UNDERLINE);
-			Paragraph heading = new Paragraph(new Phrase("Factor 3: Mental Health Functioning", fontx));
+			Font fonty = new Font(Font.FontFamily.HELVETICA, 10, Font.UNDERLINE);
+			Paragraph heading = new Paragraph(new Phrase("Factor 3: MH functioning", fontx));
 			heading.setAlignment(0);
 			doc.add(heading);
 			if (!b.getProblemStr().trim().equalsIgnoreCase("")) {
@@ -107,7 +107,7 @@ public class FactorLongReport extends BaseReport {
 		}else if(!list.isEmpty()){
 			Font fontx = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD | Font.UNDERLINE);
 			Font fonty = new Font(Font.FontFamily.HELVETICA, 12, Font.UNDERLINE);
-			Paragraph heading = new Paragraph(new Phrase("Factor 3: Mental Health Functioning", fontx));
+			Paragraph heading = new Paragraph(new Phrase("Factor 3: MH functioning", fontx));
 			heading.setAlignment(0);
 			doc.add(heading);
 		}
@@ -132,7 +132,7 @@ public class FactorLongReport extends BaseReport {
 
 		if (!list.isEmpty()) {
 			Font fontx = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD | Font.UNDERLINE);
-			Paragraph heading = new Paragraph(new Phrase("Factor 4: Physical Health Problems", fontx));
+			Paragraph heading = new Paragraph(new Phrase("Factor 4: PH functioning", fontx));
 			heading.setAlignment(0);
 			doc.add(heading);
 		}

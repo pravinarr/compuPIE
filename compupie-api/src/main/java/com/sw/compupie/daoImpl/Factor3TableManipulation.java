@@ -31,7 +31,7 @@ public class Factor3TableManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringDelete(clientId, problemId));
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -73,7 +73,7 @@ public class Factor3TableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -108,7 +108,7 @@ public class Factor3TableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -146,7 +146,7 @@ public class Factor3TableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,7 +183,7 @@ public class Factor3TableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -217,7 +217,7 @@ public class Factor3TableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -237,7 +237,7 @@ public class Factor3TableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -252,7 +252,7 @@ public class Factor3TableManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringTOSave(info));
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -267,7 +267,7 @@ public class Factor3TableManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringToUpdate(info));
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

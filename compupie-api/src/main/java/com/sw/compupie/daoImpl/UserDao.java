@@ -36,7 +36,22 @@ public class UserDao {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return present;
+	}
+	
+	public boolean update(String cusername,String cpassword,String nusername,String npassword){
+		UserDao();
+		boolean present = true;
+		Statement stmt = null;
+		try {
+			stmt = c.createStatement();
+			  stmt.executeUpdate("update USER_SECURITY set username=\""+nusername +"\" , password= \""+npassword +"\""
+					+ "where username=\""+cusername +"\";");
+			
+			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

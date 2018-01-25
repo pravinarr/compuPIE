@@ -8,8 +8,15 @@ public class DateUtil {
 
 	public static String changeDateToAmerican(String date)  {
 		Date dates = null;
+		
+		int pos = date.indexOf('-');
 		try {
-			dates = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+			if(pos >2){
+				dates = new SimpleDateFormat("yyyy-MM-DD").parse(date);
+			}else{
+				dates = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+			}
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

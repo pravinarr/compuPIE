@@ -44,7 +44,7 @@ public class Load_SocialRoles{
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -66,7 +66,7 @@ public class Load_SocialRoles{
 		}
 		rs.close();
 		stmt.close();
-		c.close();
+		 
 		return items;
 	}
 	

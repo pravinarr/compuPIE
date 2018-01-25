@@ -32,7 +32,7 @@ public class Sequencer {
 			}
 			rs.close();
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -48,7 +48,7 @@ public class Sequencer {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate("insert into sequenc (dummy) values (1);");
 			stmt.close();
-			c.close();
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

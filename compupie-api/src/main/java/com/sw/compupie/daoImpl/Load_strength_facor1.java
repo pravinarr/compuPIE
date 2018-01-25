@@ -43,7 +43,7 @@ public class Load_strength_facor1 {
 				}
 				rs.close();
 				stmt.close();
-				c.close();
+				 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

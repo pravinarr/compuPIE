@@ -26,7 +26,7 @@ public class SubstancerReport extends BaseReport {
 		heading.setAlignment(0);
 		doc.add(heading);
 		Phrase past30 = new Phrase("Past 30 days use: ", font2);
-		Phrase past30String = new Phrase(formPast30String(bean), font3);
+		Phrase past30String = new Phrase(formPast30String(bean).trim().equalsIgnoreCase("")?"None":formPast30String(bean), font3);
 		heading = new Paragraph(past30);
 		heading.add(past30String);
 		heading.setAlignment(3);
@@ -34,7 +34,7 @@ public class SubstancerReport extends BaseReport {
 		doc.add(heading);
 		checkLengthCosmetic(doc);
 		Phrase lifetime = new Phrase("Lifetime use (years): ", font2);
-		Phrase lifeTimeString = new Phrase(formLString(bean), font3);
+		Phrase lifeTimeString = new Phrase(formLString(bean).trim().equalsIgnoreCase("")?"None":formLString(bean), font3);
 		heading = new Paragraph(lifetime);
 		heading.add(lifeTimeString);
 		heading.setAlignment(3);
@@ -66,7 +66,7 @@ public class SubstancerReport extends BaseReport {
 
 	public String formLString(SubstanceAbuseBean bean) {
 		String str = "";
-		str = checkLifetime(str, "Alchohol to intoxication", bean.getAlchohol());
+		str = checkLifetime(str, "Alcohol to intoxication", bean.getAlchohol());
 		str = checkLifetime(str, "Marijuana hashish", bean.getMarijuana());
 		str = checkLifetime(str, "Hallucinogens", bean.getHallucinogens());
 		str = checkLifetime(str, "Inhalants", bean.getInhalants());
@@ -88,7 +88,7 @@ public class SubstancerReport extends BaseReport {
 		if (bean != null && bean.getLifetime()!= null && !bean.getLifetime().equalsIgnoreCase("0")) {
 			if (!str.equalsIgnoreCase(""))
 				str += ", ";
-			str += abuse + " (#" + bean.getLifetime() + ")";
+			str += abuse + " (" + bean.getLifetime() + " YRS )";
 		}
 		return str;
 	}
@@ -97,7 +97,7 @@ public class SubstancerReport extends BaseReport {
 		if (bean != null && bean.getPast30() != null && !bean.getPast30().equalsIgnoreCase("0")) {
 			if (!str.equalsIgnoreCase(""))
 				str += ", ";
-			str += abuse + " (#" + bean.getPast30() + ")";
+			str += abuse + " (" + bean.getPast30() + ")";
 		}
 		return str;
 	}

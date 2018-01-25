@@ -21,7 +21,7 @@ public class StrengthResourcesReport extends BaseReport {
 		StrengthResourceManipulation mani = new StrengthResourceManipulation();
 		StrengthAndResourcesBean bean = mani.getStrength(clientid);
 		Font font1 = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD | Font.UNDERLINE);
-		Paragraph heading = new Paragraph(new Phrase("Strength and Resources", font1));
+		Paragraph heading = new Paragraph(new Phrase("Strengths and Resources", font1));
 		heading.setAlignment(0);
 		doc.add(heading);
 		generateFactor34Strengths(clientid, doc, bean.getFactor1(), "Factor 1: Social Role and Relationship");
@@ -48,15 +48,17 @@ public class StrengthResourcesReport extends BaseReport {
 		for (String s1 : splits) {
 			String[] s = s1.split("-");
 			if (s.length > 1) {
-				child.add(new Phrase((s[0] + ": "), font5));
-				String sp[] = s[1].split(",");
-				for (String str : sp) {
-					if (!str.trim().equalsIgnoreCase("")) {
-						if (child.isEmpty()) {
-							child.add(new Phrase(str, font3));
-						} else {
-							if (!str.trim().equalsIgnoreCase("")) {
-								child.add(new Phrase((", " + str), font3));
+				if(s[1].split(",").length > 0 && s[1].split(",")[0].trim().length()>0  ){
+					child.add(new Phrase((s[0] + ": "), font5));
+					String sp[] = s[1].split(",");
+					for (String str : sp) {
+						if (!str.trim().equalsIgnoreCase("")) {
+							if (child.isEmpty()) {
+								child.add(new Phrase(str, font3));
+							} else {
+								if (!str.trim().equalsIgnoreCase("")) {
+									child.add(new Phrase((", " + str), font3));
+								}
 							}
 						}
 					}
@@ -69,6 +71,11 @@ public class StrengthResourcesReport extends BaseReport {
 					child = new Paragraph();
 				}
 			}
+		}
+		if(child.isEmpty()){
+			child.add(new Phrase("None", font3));
+			child.setIndentationLeft(10);
+			doc.add(child);
 		}
 	}
 
@@ -92,6 +99,9 @@ public class StrengthResourcesReport extends BaseReport {
 						child.add(new Phrase((", " + str), font3));
 					}
 				}
+			}
+			if(child.isEmpty()){
+				child.add(new Phrase("None", font3));
 			}
 			child.setAlignment(Element.ALIGN_JUSTIFIED);
 			child.setIndentationLeft(10);
