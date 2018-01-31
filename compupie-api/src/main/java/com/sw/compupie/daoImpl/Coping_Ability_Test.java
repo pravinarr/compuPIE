@@ -27,7 +27,7 @@ public class Coping_Ability_Test {
 	      }
 	      rs.close();
 	      stmt.close();
-	       
+	      c.close();
 	    } catch ( Exception e ) {
 	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 	      System.exit(0);

@@ -43,7 +43,7 @@ public class Load_Severity {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

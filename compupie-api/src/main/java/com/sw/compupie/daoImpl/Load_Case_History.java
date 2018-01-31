@@ -48,7 +48,7 @@ public class Load_Case_History {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

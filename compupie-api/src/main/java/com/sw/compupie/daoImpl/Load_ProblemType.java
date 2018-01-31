@@ -43,7 +43,7 @@ public class Load_ProblemType {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

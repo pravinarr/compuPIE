@@ -44,7 +44,7 @@ public class Load_DSM_AXIS_5 {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

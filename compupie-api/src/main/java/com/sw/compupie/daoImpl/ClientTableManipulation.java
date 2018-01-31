@@ -58,7 +58,7 @@ public class ClientTableManipulation {
 			}
 			rs.close();
 			stmt.close();
-		 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -75,7 +75,7 @@ public class ClientTableManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate("update CLIENT_INFO set deleted='Y' where id=\""+id+"\"");
 			stmt.close();
-		 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -118,7 +118,7 @@ public class ClientTableManipulation {
 			}
 			rs.close();
 			stmt.close();
-		 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -139,7 +139,7 @@ public class ClientTableManipulation {
 			}
 			rs.close();
 			stmt.close();
-		 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -156,7 +156,7 @@ public class ClientTableManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringTOSave(info));
 			stmt.close();
-		 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -174,7 +174,7 @@ public class ClientTableManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringToUpdate(info));
 			stmt.close();
-		 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

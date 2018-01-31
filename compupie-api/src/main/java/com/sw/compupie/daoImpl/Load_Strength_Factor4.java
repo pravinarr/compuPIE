@@ -43,7 +43,7 @@ public class Load_Strength_Factor4 {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

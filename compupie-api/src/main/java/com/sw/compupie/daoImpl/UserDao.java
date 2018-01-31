@@ -36,6 +36,7 @@ public class UserDao {
 			}
 			rs.close();
 			stmt.close();
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -52,6 +53,7 @@ public class UserDao {
 					+ "where username=\""+cusername +"\";");
 			
 			stmt.close();
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

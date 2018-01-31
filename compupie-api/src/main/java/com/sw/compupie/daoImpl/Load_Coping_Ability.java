@@ -43,7 +43,7 @@ public class Load_Coping_Ability {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

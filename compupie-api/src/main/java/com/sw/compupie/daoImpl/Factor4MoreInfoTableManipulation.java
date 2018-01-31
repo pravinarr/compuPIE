@@ -37,7 +37,7 @@ public class Factor4MoreInfoTableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class Factor4MoreInfoTableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,7 +77,7 @@ public class Factor4MoreInfoTableManipulation {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -92,7 +92,7 @@ public class Factor4MoreInfoTableManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringTOSave(info));
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -107,7 +107,7 @@ public class Factor4MoreInfoTableManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringToUpdate(info));
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

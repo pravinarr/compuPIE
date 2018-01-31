@@ -50,7 +50,7 @@ public class MentalStatusExamManipulation {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,7 +70,7 @@ public class MentalStatusExamManipulation {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -90,7 +90,7 @@ public class MentalStatusExamManipulation {
 			}
 			rs.close();
 			stmt.close();
-			 
+			c.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -105,7 +105,7 @@ public class MentalStatusExamManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringTOSave(info));
 			stmt.close();
-			 
+			c.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -120,7 +120,7 @@ public class MentalStatusExamManipulation {
 			stmt = c.createStatement();
 			update = stmt.executeUpdate(createStringToUpdate(info));
 			stmt.close();
-			 
+			c.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
